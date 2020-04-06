@@ -14,22 +14,17 @@ namespace JustOne
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Number of players: ");
-            var numPlayers = Console.ReadLine();
+            var numPlayers = 5;
+            Console.WriteLine("Number of players: " + numPlayers);
             var playerList = new List<Player>();
-            try
+
+            for (var i = 0; i < numPlayers; i++)
             {
-                for (var i = 0; i < int.Parse(numPlayers); i++)
-                {
-                    playerList.Add(new Player(i.ToString()));
-                }
-            } catch (Exception e)
-            {
-                Console.WriteLine("Error: ", e);
+                playerList.Add(new Player(i.ToString()));
             }
 
+            Console.WriteLine("Player list: " + playerList);
             var newGame = new Game(playerList);
-            Console.WriteLine(newGame);
             // CreateHostBuilder(args).Build().Run();
         }
 

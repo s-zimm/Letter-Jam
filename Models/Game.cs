@@ -15,8 +15,8 @@ namespace JustOne.Models
             CurrentGameDeck.Shuffle();
             var splitDecksForInitialWords = SplitDeck(CurrentGameDeck, Players.Count);
 
+            var i = 0;
             Players.ForEach(player => {
-                var i = 0;
                 player.InitialCards = splitDecksForInitialWords[i];
                 i++;
             });
@@ -34,21 +34,20 @@ namespace JustOne.Models
 
         public List<dynamic> SplitDeck(Deck shuffledDeck, int numPlayers)
         {
-            var numberOfSections = Math.Floor((double)shuffledDeck.FullCardsList.Count / numPlayers);
+            var cardsListCount = (double)shuffledDeck.FullCardsList.Count;
+            Console.WriteLine("Cards Count: " + cardsListCount);
+            var sectionSize = Math.Floor(cardsListCount / numPlayers);
             var splits = new List<dynamic>();
-            for (var i = 0; i < shuffledDeck.FullCardsList.Count; i++)
+            Console.WriteLine("Cards per player: " + sectionSize);
+            var currentSplitIndex = 0;
+            var startIndexForSection = 0;
+            for (var i = 0; i < numPlayers; i++)
             {
-                var currentSplitIndex = 0;
-                if (i % numberOfSections == 0)
-                {
-                    var range = shuffledDeck.FullCardsList.GetRange(i, i + 1);
-                    if (!splits[currentSplitIndex])
-                    {
-                        splits[currentSplitIndex] = new List<Card>() {};
-                    }
-                    splits[currentSplitIndex].AddRange(range);
-                    currentSplitIndex++;
-                }
+                var range = shuffledDeck.FullCardsList.GetRange(startIndexForSection, (int)sectionSize);
+                splits.Add(new List<Card>() {});
+                splits[currentSplitIndex].AddRange(range);
+                currentSplitIndex++;
+                startIndexForSection += (int)sectionSize;
             }
 
             return splits;
