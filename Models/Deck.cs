@@ -5,10 +5,31 @@ namespace JustOne.Models
 {
     public class Deck
     {
-        public static List<string> AllLettersList = new List<string>()
+        public static Dictionary<string, int> NumberOfIndividualLettersMap = new Dictionary<string, int>()
         {
-            "A", "B", "C"
+            {"A", 4},
+            {"B", 2},
+            {"C", 3},
+            {"D", 3},
+            {"E", 6},
+            {"F", 2},
+            {"G", 2},
+            {"H", 3},
+            {"I", 4},
+            {"K", 2},
+            {"L", 3},
+            {"M", 2},
+            {"N", 3},
+            {"O", 4},
+            {"P", 2},
+            {"R", 4},
+            {"S", 4},
+            {"T", 4},
+            {"U", 3},
+            {"W", 2},
+            {"Y", 2}
         };
+
         public List<Card> FullCardsList;
         
         public List<Card> ExistingCardsList { get; set; }
@@ -18,7 +39,14 @@ namespace JustOne.Models
         public Deck()
         {
             var allCards = new List<Card>();
-            AllLettersList.ForEach(letter => allCards.Add(new Card(letter)));
+            var letters = NumberOfIndividualLettersMap.Keys;
+            foreach(var letter in letters)
+            {
+                for (var i = 0; i < NumberOfIndividualLettersMap[letter]; i++)
+                {
+                    allCards.Add(new Card(letter));
+                }
+            }
 
             FullCardsList = allCards;
         }
