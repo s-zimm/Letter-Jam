@@ -22,6 +22,31 @@ namespace JustOne.Models
             });
         }
 
+        public void InitialWordsCreated(Dictionary<string, List<Card>> userCreatedWordMap)
+        {
+            var users = userCreatedWordMap.Keys;
+            foreach(var user in users)
+            {
+                var highestIndex = Players.Count - 1;
+                var foundPlayer = Players.Find(player => player.Name == user);
+                var playerIndex = Players.IndexOf(foundPlayer);
+                var targetIndex = 0;
+
+                switch(playerIndex)
+                {
+                    case 0:
+                        targetIndex = highestIndex;
+                        break;
+
+                    default:
+                        targetIndex = playerIndex - 1;
+                        break;
+                }
+
+                Players[targetIndex].Cards = userCreatedWordMap[user];
+            }
+        }
+
         public void DealCards()
         {
 

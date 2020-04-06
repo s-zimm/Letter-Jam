@@ -33,7 +33,6 @@ namespace JustOne.Models
         public List<Card> FullCardsList;
         
         public List<Card> ExistingCardsList { get; set; }
-        private static Random rng = new Random();  
 
 
         public Deck()
@@ -58,6 +57,7 @@ namespace JustOne.Models
 
         public void Shuffle()  
         {
+            Random rng = new Random(); 
             int n = FullCardsList.Count;  
             while (n > 1) {  
                 n--;  
