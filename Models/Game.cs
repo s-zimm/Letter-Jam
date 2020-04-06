@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace JustOne.Models
+namespace LetterJam.Models
 {
     public class Game
     {

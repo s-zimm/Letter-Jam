@@ -1,4 +1,4 @@
-namespace JustOne.Models
+namespace LetterJam.Models
 {
     public class Card
     {

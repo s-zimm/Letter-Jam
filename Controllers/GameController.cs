@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Text.Json;
-using JustOne.Models;
+using LetterJam.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JustOne.Controllers
+namespace LetterJam.Controllers
 {
     [ApiController]
     [Route("[controller]")]

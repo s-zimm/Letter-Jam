@@ -1,6 +1,6 @@
 using System;
 
-namespace JustOne
+namespace LetterJam
 {
     public class WeatherForecast
     {
