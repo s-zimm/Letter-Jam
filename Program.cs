@@ -14,18 +14,18 @@ namespace LetterJam
     {
         public static void Main(string[] args)
         {
-            var numPlayers = 5;
-            Console.WriteLine("Number of players: " + numPlayers);
-            var playerList = new List<Player>();
+            // var numPlayers = 5;
+            // Console.WriteLine("Number of players: " + numPlayers);
+            // var playerList = new List<Player>();
 
-            for (var i = 0; i < numPlayers; i++)
-            {
-                playerList.Add(new Player(i.ToString()));
-            }
+            // for (var i = 0; i < numPlayers; i++)
+            // {
+            //     playerList.Add(new Player(i.ToString()));
+            // }
 
-            Console.WriteLine("Player list: " + playerList);
-            var newGame = new Game(playerList);
-            // CreateHostBuilder(args).Build().Run();
+            // Console.WriteLine("Player list: " + playerList);
+            // var newGame = new Game(playerList);
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
