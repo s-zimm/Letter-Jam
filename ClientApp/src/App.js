@@ -5,6 +5,7 @@ import { Home } from './components/Home';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import StartGame from './components/StartGame';
+import WaitingRoom from './components/WaitingRoom';
 import './custom.css'
 
 export default class App extends Component {
@@ -18,6 +19,7 @@ export default class App extends Component {
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/new-game' component={() => <StartGame start={true} />} />
         <Route path='/join-game' component={() => <StartGame start={false} />} />
+        <Route path='/game/:roomCode' component={() => <WaitingRoom />} />
 
       </Layout>
     );

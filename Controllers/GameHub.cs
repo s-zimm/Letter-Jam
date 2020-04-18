@@ -11,7 +11,22 @@ namespace LetterJam.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            var gameRoomCode = RandomString(8);
+            var httpContext = Context.GetHttpContext();
+            var username = httpContext.Request.Query["username"].ToString();
+            var roomCode = httpContext.Request.Query["roomcode"].ToString();
+            var gameRoomCode = "";
+
+            if (roomCode != "")
+            {
+                gameRoomCode = roomCode;
+            } 
+            else
+            {
+                gameRoomCode = RandomString(8);
+            }
+            var newUser = new Player(username);
+            Context.Items[gameRoomCode] = newUser;
+            await SendRoomCode(gameRoomCode, Context);
             await Groups.AddToGroupAsync(Context.ConnectionId, gameRoomCode);
             await base.OnConnectedAsync();
         }
